@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        if(digits.empty())
+            return digits;
+        int index = digits.size() - 1;
+        digits[index] += 1;
+        
+        while(digits[index] > 9 && index > 0){
+            digits[index] = digits[index] % 10;
+            index--;
+            digits[index] += 1;
+        }
+        
+        //Handle the last digit
+        if(digits[0] > 9){
+            digits[0] = digits[0] % 10;
+            digits.insert(digits.begin(), 1);
+        }
+        
+        return digits;
+            
+
+    }
+};
