@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int removeElement(vector<int>& nums, int val) {
+        if(nums.size() == 0)
+            return 0;
+        
+        int newSize = nums.size();
+        int frontIndex = 0;
+        int endIndex = nums.size() -1;
+    
+        while(frontIndex <= endIndex){
+            if(nums[endIndex] == val){
+                --newSize;
+                --endIndex;
+                break;        
+            }
+            else if(nums[frontIndex] == val){
+                --newSize;
+                nums[frontIndex] = nums[endIndex];
+                ++frontIndex;
+            }
+            frontIndex++;
+        }
+        return newSize;
+    }
+};
