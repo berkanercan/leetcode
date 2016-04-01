@@ -1,0 +1,30 @@
+class Solution {
+public:
+     bool isAnagram(string s, string t) {
+        map<char, int> dict;
+        for(int i = 0; i < s.length(); i++){
+            if(dict.count(s[i]) > 0)
+                dict[s[i]] += 1;
+            else
+                dict[s[i]] = 1;
+
+        }
+
+        for(int i = 0; i < t.length(); i++){
+            if( dict[t[i]] == 0){
+                return false;
+            }
+            else{
+                dict[t[i]] -= 1;
+                if( dict[t[i]] == 0)
+                    dict.erase(t[i]);
+            }
+        }
+
+        if(dict.empty())
+            return true;
+
+        return false;
+    }
+
+};
